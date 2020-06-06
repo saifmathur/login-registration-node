@@ -5,11 +5,10 @@ const bcrypt = require('bcryptjs');
 
 
 //load user model
-const User = require('../models/User');
+const User = require('../models/Users');
 
 module.exports = function (req, res){
-    passport.use(
-        new LocalStrategy({usernameField: 'email'}, function (email, password, done){
+    passport.use(new LocalStrategy({usernameField: 'email'}, function (email, password, done){
             //match user
             User.findOne({email: email}).then(user, function (user) {
                 if (!user) {
